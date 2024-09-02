@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 600px;
+            background-image: url(bg.avif);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #box {
+            border: 1px solid black;
+            height: 550px;
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #292626;
+            border-radius: 10px;
+        }
+
+        #glass {
+            border: 1px solid black;
+            height: 80px;
+            width: 85%;
+            margin: 6%;
+            color: #fff;
+            background-color: #c18f1338;
+            font-size: 65px;
+            text-align: right;
+        }
+
+        #row1,
+        #row2,
+        #row3,
+        #row4,
+        #row5 {
+            height: 75px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2%;
+        }
+
+        .btn {
+            height: 40px;
+            width: 80px;
+            font-size: 20px;
+            text-align: center;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            color: #fff;
+            box-shadow: rgba(0, 0, 0, 0.24) 1px 4px 4px 1px;
+            background: linear-gradient(90deg, #313135, #3e3e42, #1f2222);
+            outline: none;
+            border: none;
+            cursor: pointer;
+            border-radius: 5%
+        }
+
+        .red {
+            background: linear-gradient(90deg, #ee1633, #ff0629d4, #d42626);
+        }
+
+        .sky {
+            background: linear-gradient(90deg, #16edee, #0cecd7, #26d4cf);
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <form name="form">
+            <input id="glass" type="text" name="answer" readonly>
+            <div id="row1">
+                <input type="button" id="clear" class="btn red" value="AC" onclick="clr()">
+                <input type="button" id="del" class="btn red" value="DEL" onclick="DEL()">
+                <input type="button" class="btn red" value="%" onclick="percentage()">
+                <input type="button" class="btn sky" value="+" onclick="form.answer.value += '+' ">
+            </div>
+            <div id="row2">
+                <input type="button" class="btn" value="7" onclick="form.answer.value += '7' ">
+                <input type="button" class="btn" value="8" onclick="form.answer.value += '8' ">
+                <input type="button" class="btn" value="9" onclick="form.answer.value += '9' ">
+                <input type="button" class="btn sky" value="-" onclick="form.answer.value += '-' ">
+            </div>
+            <div id="row3">
+                <input type="button" class="btn" value="4" onclick="form.answer.value += '4' ">
+                <input type="button" class="btn" value="5" onclick="form.answer.value += '5' ">
+                <input type="button" class="btn" value="6" onclick="form.answer.value += '6' ">
+                <input type="button" class="btn sky" value="&#215" onclick="form.answer.value += '*' ">
+            </div>
+            <div id="row4">
+                <input type="button" class="btn" value="1" onclick="form.answer.value += '1' ">
+                <input type="button" class="btn" value="2" onclick="form.answer.value += '2' ">
+                <input type="button" class="btn" value="3" onclick="form.answer.value += '3' ">
+                <input type="button" class="btn sky" value="&#247" onclick="form.answer.value += '/' ">
+            </div>
+            <div id="row5">
+                <input type="button" class="btn" value="00" onclick="form.answer.value += '00' ">
+                <input type="button" class="btn" value="0" onclick="form.answer.value += '0' ">
+                <input type="button" class="btn" value="." onclick="form.answer.value += '.' ">
+                <input type="button" class="btn sky" value="=" onclick="form.answer.value = eval(form.answer.value) ">
+            </div>
+        </form>
+    </div>
+    <script>
+        function clr() {
+            document.getElementById("glass").value = ""
+        }
+
+        function DEL() {
+            document.getElementById("glass").value = document.getElementById("glass").value.slice(0, -1);
+        }
+
+        function percentage() {
+            let display = document.getElementById("glass").value
+            document.getElementById("glass").value = (display / 100).toString();
+        }
+        
+        </script>
+</body>
+
+</html>
